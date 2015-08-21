@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+	function myFunction() {
+		var txt = "";
+		var gradeNum = document.getElementById("grade").value;
+		if (isNaN(gradeNum)) {
+			txt = "Invalid";
+			alert(txt);
+			return false;
+		} else if (document.getElementById("grade").validity.rangeUnderflow) {
+			txt = "Value too small";
+			alert(txt);
+			return false;
+		} else if (document.getElementById("grade").validity.rangeOverrflow) {
+			txt = "Value too Large";
+			alert(txt);
+			return false;
+		}
+	}
+</script>
+
+<title>Home</title>
+</head>
+<body>
+
+
+
+	<div class="container">
+		<h1>Simple HTML FORM and SERVLET</h1>
+	</div>
+
+
+	<nav class="navbar navbar-inverse">
+					<ul><li><a href="index.html">HOME </a></li></ul>
+	</nav>
+	<div align="center">
+
+		<h2>Prof. Strongheim's Grade Book</h2>
+		<form action="ProcessForm" onSubmit=" return myFunction()">
+			Student id:<br> <input type="text" name="id" required> <br>
+			Name:<br> <input type="text" name="name" required> <br>
+			Assignment:<br> <input type="text" name="assignment" required>
+			 <br> Class: <br><select name="class_name" style="width: 160px; height:25px">
+				<option value="phy" selected>Physics</option>
+				<option value="sci">Earth Science</option>
+				<option value="math">Mathematics</option>
+				 </select><br> 
+				Date(mm/dd/yy):<br> <input
+				type="text" name="date" required> <br> Grades:<br>
+				<input type="number" id="grade" name="grade" min="0" max="100"
+				required> <br> Assignment Type:<br> <select name="ass_type" style="width: 160px; height:25px">
+				<option value="class" selected style="width: 160px; height:25px">Class</option>
+				<option value="home">Home</option>
+				<option value="quiz">Quiz</option>
+				<option value="project">Project</option>
+			</select><br> <input type="Submit" value="Submit">
+		</form>
+		<p id="demo"></p>
+	</div>
+</body>
+</html>
